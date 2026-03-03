@@ -59,6 +59,7 @@ Multiply across all bug types, and type safety pays for itself in months.
 ### Onboarding Cost
 
 **Traditional onboarding:**
+
 | Activity | Time |
 |----------|------|
 | Clone repo, find README | 15 min |
@@ -71,6 +72,7 @@ Multiply across all bug types, and type safety pays for itself in months.
 | **Total** | **1-3 days** |
 
 **Zero-config onboarding:**
+
 | Activity | Time |
 |----------|------|
 | Clone repo | 1 min |
@@ -82,12 +84,12 @@ Multiply across all bug types, and type safety pays for itself in months.
 
 | Scenario | Traditional | Zero-Config | Savings |
 |----------|-------------|-------------|---------|
-| Junior developer ($60/hr) | $960 (2 days) | $5 | $955 |
-| Senior developer ($120/hr) | $1,920 (2 days) | $10 | $1,910 |
-| Contractor ($150/hr) | $2,400 (2 days) | $12 | $2,388 |
+| Junior developer ($20/hr) | $320 (2 days) | $2 | $318 |
+| Mid-level developer ($35/hr) | $560 (2 days) | $3 | $557 |
+| Senior developer ($50/hr) | $800 (2 days) | $4 | $796 |
 
 **For a team of 10 with 30% annual turnover + 2 rotations:**
-- Traditional: 5 people × 2 days × $100/hr avg = $8,000/year wasted
+- Traditional: 5 people × 2 days × $35/hr avg = $2,800/year wasted
 - Zero-config: ~$50/year
 
 ### Context Switching Cost
@@ -104,7 +106,7 @@ Research shows it takes **23 minutes** to regain focus after an interruption (Un
 | "Works on my machine" debugging | 1x/week | 1-4 hours |
 
 **Annual cost for a 10-person team:**
-- ~4 hours/week × 50 weeks × $100/hr = **$20,000/year** in context switching alone
+- ~4 hours/week × 50 weeks × $35/hr = **$7,000/year** in context switching alone
 
 **Solution cost:** 2-4 hours to set up docker-compose and documentation.
 
@@ -134,7 +136,7 @@ if (customer.Address?.Street is { } street)
 | NullReferenceExceptions/month | 5-15 | 0-1 |
 | Time to investigate each | 30-120 min | N/A |
 | Production incidents from null | 1-2/month | ~0 |
-| Monthly cost | $2,000-5,000 | ~$200 |
+| Monthly cost | $700-1,800 | ~$70 |
 
 **Setup cost:** 1-2 days to enable nullable and fix existing warnings.
 **Payback period:** 1-2 months.
@@ -158,7 +160,7 @@ TransferMoney(toAccountId, fromAccountId, 1000); // Oops!
 - Hotfix + deploy: 1-2 hours
 - Customer communication: 1-2 hours
 - Postmortem: 2 hours (5 people × 30 min)
-- **Total: 8-15 hours = $800-$1,500 per incident**
+- **Total: 8-15 hours = $400-$750 per incident**
 
 **Prevention cost:**
 ```csharp
@@ -199,7 +201,7 @@ public ErrorOr<Patient> GetPatient(PatientId id);
 | Production debugging | Stack trace hunting | Explicit error codes in logs |
 
 **Time saved per developer per day:** 10-30 minutes in understanding and debugging.
-**Annual value for 10-person team:** 10 × 20 min × 250 days × $1.67/min = **$83,500**
+**Annual value for 10-person team:** 10 × 20 min × 250 days × $0.58/min = **$29,000**
 
 ---
 
@@ -219,7 +221,7 @@ public ErrorOr<Patient> GetPatient(PatientId id);
 If slow tests cause developers to skip running them 50% of the time, and this lets 2 extra bugs per week reach CI:
 
 - Time wasted per remote bug: 30 min (context switch + CI wait + fix + re-push)
-- Weekly cost: 2 × 30 min × $100/hr = $100/week = **$5,000/year**
+- Weekly cost: 2 × 30 min × $35/hr = $35/week = **$1,750/year**
 
 **Fix:** Parallelize tests, remove I/O from unit tests, use test categories.
 
@@ -242,7 +244,7 @@ Each flaky test failure:
 - Reruns pipeline: 10 min wait
 - Sometimes deploys anyway: risk of real bug
 
-If 10% of CI runs are flaky: 0.1 × 5 runs/day × 25 min × $100/hr × 250 days = **$52,000/year**
+If 10% of CI runs are flaky: 0.1 × 5 runs/day × 25 min × $35/hr × 250 days = **$18,000/year**
 
 ---
 
@@ -261,7 +263,7 @@ If 10% of CI runs are flaky: 0.1 × 5 runs/day × 25 min × $100/hr × 250 days 
 
 A 20-minute pipeline vs. 5-minute pipeline:
 - Extra wait time: 15 min × 5 PRs/day × 10 developers = 750 min/day
-- At $100/hr: **$2,500/day = $625,000/year**
+- At $35/hr: **$875/day = $219,000/year**
 
 This is why CI optimization has massive ROI.
 
@@ -294,19 +296,19 @@ Small investments compound over the codebase lifetime:
 **Year 1:**
 | Practice | Setup Cost | Annual Savings |
 |----------|------------|----------------|
-| Nullable enabled | 16 hours | $3,000 |
-| Typed IDs (10 types) | 4 hours | $2,000 |
-| Docker compose | 8 hours | $8,000 |
-| Central package management | 2 hours | $1,000 |
-| Fast CI pipeline | 16 hours | $20,000 |
-| **Total** | **46 hours (~$4,600)** | **$34,000** |
+| Nullable enabled | 16 hours | $1,000 |
+| Typed IDs (10 types) | 4 hours | $700 |
+| Docker compose | 8 hours | $2,800 |
+| Central package management | 2 hours | $350 |
+| Fast CI pipeline | 16 hours | $7,000 |
+| **Total** | **46 hours (~$1,600)** | **$11,850** |
 
 **ROI Year 1: 640%**
 
 **Years 2-5:**
 - Setup cost: $0 (already done)
-- Savings compound: ~$40,000/year (codebase grows, more bugs prevented)
-- **5-year value: $170,000+**
+- Savings compound: ~$14,000/year (codebase grows, more bugs prevented)
+- **5-year value: $60,000+**
 
 ---
 
@@ -384,10 +386,10 @@ The ROI calculations in this document use specific assumptions. Here's how the p
 
 | Scenario | Assumptions | Payback Period | 5-Year Value |
 |----------|-------------|----------------|--------------|
-| **Base case** | $100/hr, 4 bugs/year, 10-person team | 2-3 months | $170,000 |
-| **Conservative** | $60/hr, 2 bugs/year, 5-person team | 5-6 months | $50,000 |
-| **Aggressive** | $150/hr, 8 bugs/year, 15-person team | 1 month | $400,000+ |
-| **Minimum viable** | $50/hr, 1 bug/year, 3-person team | 8-10 months | $25,000 |
+| **Base case** | $35/hr, 4 bugs/year, 10-person team | 3-4 months | $60,000 |
+| **Conservative** | $20/hr, 2 bugs/year, 5-person team | 6-8 months | $18,000 |
+| **Aggressive** | $50/hr, 8 bugs/year, 15-person team | 1-2 months | $140,000+ |
+| **Minimum viable** | $20/hr, 1 bug/year, 3-person team | 10-12 months | $9,000 |
 
 **Key insight:** Even under the most conservative assumptions (small team, low rates, few bugs), the investment pays back within a year. The question isn't *whether* to invest—it's *how aggressively*.
 
