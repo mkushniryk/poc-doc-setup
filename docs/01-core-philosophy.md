@@ -65,7 +65,7 @@ public record Appointment
 
 > **Goal:** The compiler catches bugs before runtime.
 >
-> **See also:** [Strongly-Typed IDs with Vogen](02-language-features.md#211-strongly-typed-ids-with-vogen) for production implementation, [Economics](05-economics.md#strongly-typed-ids) for ROI analysis.
+> **See also:** [Strongly-Typed IDs with Vogen](02-language-features.md#21-strongly-typed-ids-with-vogen) for production implementation, [Economics](05-economics.md#strongly-typed-ids) for ROI analysis.
 
 > **When to skip typed IDs:** Internal tools with single-developer ownership, scripts or one-off utilities, or when all ID parameters are already different types (e.g., `userId: string`, `orderId: int`). If you're unsure, default to typed IDs—the cost is low.
 
@@ -118,7 +118,7 @@ public IActionResult GetPatient(Guid id)
 }
 ```
 
-> For full Result type implementations, see [Section 2.1: Discriminated Unions](02-language-features.md#21-discriminated-unions-eliminating-invalid-states).
+> For full Result type implementations, see [Section 2.2: Discriminated Unions](02-language-features.md#22-discriminated-unions-eliminating-invalid-states).
 
 **Recommended libraries:**
 - [`ErrorOr`](https://github.com/amantinband/error-or) — lightweight, discriminated union style

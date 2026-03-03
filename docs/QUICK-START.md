@@ -149,7 +149,7 @@ dotnet add package Respawn
 ```
 
 - [ ] Write integration tests for critical paths
-- [ ] See [Testing Strategy](testing-strategy.md#integration-testing)
+- [ ] See [Testing Strategy](testing-strategy.md#4-integration-testing)
 
 ### Architecture Tests
 - [ ] Add ArchUnitNET:

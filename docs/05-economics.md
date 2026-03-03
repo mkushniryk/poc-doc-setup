@@ -141,7 +141,7 @@ if (customer.Address?.Street is { } street)
 
 ### Strongly-Typed IDs
 
-> **Implementation:** See [02-language-features: Strongly-Typed IDs with Vogen](02-language-features.md#211-strongly-typed-ids-with-vogen)
+> **Implementation:** See [02-language-features: Strongly-Typed IDs with Vogen](02-language-features.md#21-strongly-typed-ids-with-vogen)
 
 **The problem:**
 
