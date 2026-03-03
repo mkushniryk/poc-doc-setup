@@ -1,0 +1,122 @@
+site_name: .NET Velocity & Quality Playbook
+site_description: Ship faster by catching bugs before they ship. A practical guide to .NET development.
+site_url: https://yourusername.github.io/your-repo-name/
+
+repo_name: GitHub
+repo_url: https://github.com/yourusername/your-repo-name
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: README.md
+  - Getting Started:
+    - Executive Summary: EXECUTIVE-SUMMARY.md
+    - Quick Start: QUICK-START.md
+  - Core Playbook:
+    - 1. Core Philosophy: 01-core-philosophy.md
+    - 2. Language Features: 02-language-features.md
+    - 3. Project Configuration: 03-project-configuration.md
+    - 4. Developer Experience: 04-developer-experience.md
+    - 5. Economics: 05-economics.md
+    - 6. Standards & Culture: 06-standards-culture.md
+  - Implementation Guides:
+    - Testing Strategy: testing-strategy.md
+    - Testing Advanced: testing-advanced.md
+    - PR Review Process: pr-review-process.md
+    - Migration Guide: migration-guide.md
+    - External Integration: external-integration.md
+    - AI-Assisted Development: ai-assisted-development.md
+
+plugins:
+  - search:
+      lang: en
+  - tags
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright &copy; 2026 - .NET Velocity Playbook

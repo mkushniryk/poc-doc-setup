@@ -1,0 +1,55 @@
+/* Custom styles for .NET Playbook */
+
+/* Better code block styling */
+.md-typeset code {
+  font-size: 0.85em;
+}
+
+/* Improve table readability */
+.md-typeset table:not([class]) {
+  font-size: 0.85rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+/* Admonition tweaks */
+.md-typeset .admonition {
+  font-size: 0.9rem;
+}
+
+/* Navigation improvements */
+.md-nav__link {
+  font-size: 0.75rem;
+}
+
+/* Better inline code in headers */
+.md-typeset h1 code,
+.md-typeset h2 code,
+.md-typeset h3 code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Quick reference box styling */
+.md-typeset pre > code {
+  border-radius: 0.3rem;
+}
+
+/* Hero section on home page */
+.md-typeset .hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.md-typeset .hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tag styling */
+.md-typeset .md-tag {
+  font-size: 0.7rem;
+}
