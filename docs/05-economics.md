@@ -48,7 +48,7 @@ A `Guid` mixup bug (swapping `customerId` and `orderId`):
 
 **If this bug type occurs 4x per year** in an untyped codebase:
 - Cost with typed IDs: ~$0
-- Cost without: 4 × 8 hours × $100/hour = $3,200 minimum
+- Cost without: 4 × 8 hours × $50/hour = $1,600 minimum
 
 Multiply across all bug types, and type safety pays for itself in months.
 

@@ -30,13 +30,13 @@ AI subscriptions are expensive. GitHub Copilot, Claude, GPT-4 — costs add up q
 
 ### The Honest Budget Reality
 
-Let's be clear about what AI costs look like for a manager:
+Let's be clear about what AI costs look like for a manager (mid-level contractor at ~$35/hour):
 
 | Line Item | Before AI | After AI |
 |-----------|-----------|----------|
-| Developer salary | $10,000/month | $10,000/month |
+| Developer salary | $5,600/month | $5,600/month |
 | AI subscriptions | $0 | $50–200/month |
-| **Total** | $10,000 | $10,050–10,200 |
+| **Total** | $5,600 | $5,650–5,800 |
 
 **You don't save money on your monthly bill.** The developer keeps working. The salary stays the same. AI is an addition, not a replacement.
 
@@ -82,17 +82,23 @@ The value isn't cost reduction — it's **output multiplication**:
 
 ```
 Monthly AI cost:           $50
-Developer salary:          $10,000
-Hours freed per month:     40+ hours
+Developer rate:            $35/hour (mid-level)
+Break-even point:          1.5 hours saved per month
 
-What you pay:              +$50/month
-What you get:              40 hours of additional capacity
-
-Cost per additional hour:  $1.25/hour
-vs hiring another dev:     $60+/hour
+Actual hours freed:        40+ hours/month
+Value of freed time:       $1,400/month
+ROI:                       28x return
 ```
 
-**AI gives you ~40 hours of extra capacity for $50. Hiring gives you 160 hours for $10,000.**
+**Break-even is trivially low.** If AI helps you write one unit test faster, skip one Stack Overflow session, or generate one boilerplate file — you've already paid for the month.
+
+| At $35/hour | Saves | Pays for |
+|-------------|-------|----------|
+| One regex generation | 30 min | Half the subscription |
+| One test file | 2.5 hours | 1.7 months |
+| One boilerplate module | 2 hours | 1.3 months |
+
+**Even at lower market rates, the economics are overwhelming.** AI gives you 40 hours of capacity for $50. Hiring gives you 160 hours for $5,600. That's $1.25/hour vs $35/hour for incremental capacity.
 
 ### What AI Eliminates
 
