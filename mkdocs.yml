@@ -61,6 +61,7 @@ nav:
     - Migration Guide: migration-guide.md
     - External Integration: external-integration.md
     - AI-Assisted Development: ai-assisted-development.md
+    - Health Checks: health-checks.md
 
 plugins:
   - search:
