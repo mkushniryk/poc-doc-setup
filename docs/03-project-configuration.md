@@ -337,61 +337,183 @@ steps:
 
 ---
 
-## 3.6 Complete Quality Pipeline
+## 3.6 Single Source of Truth: Local = CI
 
-Combine all tools for comprehensive code quality.
+**The principle:** Every check that runs in CI must be runnable locally with the exact same command. CI pipelines call scripts; they don't contain logic.
 
-```bash
-#!/bin/bash
-# scripts/quality-check.sh
+### Why This Matters
 
-set -e
+| Problem | Without Script Sharing | With Script Sharing |
+|---------|----------------------|---------------------|
+| "Works on my machine" | CI uses different commands | Identical execution |
+| Debugging CI failures | Reproduce in pipeline | Run `./scripts/ci.ps1` locally |
+| Updating checks | Edit YAML + test in PR loop | Edit script + test locally |
+| Onboarding | "Read the YAML to understand" | "Run the same script" |
 
-echo "=== Restoring packages ==="
+**No surprises.** If it passes locally, it passes in CI. If it fails in CI, you can reproduce it instantly.
+
+### PowerShell Scripts (Cross-Platform)
+
+PowerShell Core runs on Windows, macOS, and Linux. Use it as the single script language.
+
+```powershell
+# scripts/ci.ps1
+# Single source of truth for all CI checks
+
+param(
+    [switch]$SkipTests,
+    [switch]$SkipFormat,
+    [string]$Configuration = "Release"
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "=== Restoring packages ===" -ForegroundColor Cyan
 dotnet restore
 
-echo "=== Checking code format ==="
-dotnet format --verify-no-changes --no-restore
+if (-not $SkipFormat) {
+    Write-Host "=== Checking code format ===" -ForegroundColor Cyan
+    dotnet format --verify-no-changes --no-restore
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Format check failed. Run 'dotnet format' to fix." -ForegroundColor Red
+        exit 1
+    }
+}
 
-echo "=== Building with warnings as errors ==="
-dotnet build --no-restore --configuration Release /p:TreatWarningsAsErrors=true
+Write-Host "=== Building ===" -ForegroundColor Cyan
+dotnet build --no-restore --configuration $Configuration /p:TreatWarningsAsErrors=true
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Build failed." -ForegroundColor Red
+    exit 1
+}
 
-echo "=== Running tests ==="
-dotnet test --no-build --configuration Release
+if (-not $SkipTests) {
+    Write-Host "=== Running unit tests ===" -ForegroundColor Cyan
+    dotnet test --no-build --configuration $Configuration --filter "Category!=Integration"
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Tests failed." -ForegroundColor Red
+        exit 1
+    }
+}
 
-echo "=== Quality check passed ==="
+Write-Host "=== All checks passed ===" -ForegroundColor Green
 ```
 
-### Makefile for Common Tasks
+```powershell
+# scripts/test-integration.ps1
+# Integration tests with Testcontainers
+
+param(
+    [string]$Configuration = "Release"
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "=== Running integration tests ===" -ForegroundColor Cyan
+dotnet test --configuration $Configuration --filter "Category=Integration"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Integration tests failed." -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "=== Integration tests passed ===" -ForegroundColor Green
+```
+
+### CI Pipelines Call Scripts (Don't Duplicate Logic)
+
+**GitHub Actions:**
+```yaml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      # Single line - calls the same script you run locally
+      - name: Run CI checks
+        run: pwsh ./scripts/ci.ps1
+        
+      - name: Run integration tests
+        run: pwsh ./scripts/test-integration.ps1
+```
+
+**Azure DevOps:**
+```yaml
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: UseDotNet@2
+    inputs:
+      version: '8.0.x'
+  
+  # Single line - same script as local
+  - pwsh: ./scripts/ci.ps1
+    displayName: 'Run CI checks'
+    
+  - pwsh: ./scripts/test-integration.ps1
+    displayName: 'Run integration tests'
+```
+
+### Local Development Workflow
+
+```bash
+# Run exact same checks as CI
+pwsh ./scripts/ci.ps1
+
+# Skip tests for quick format/build check
+pwsh ./scripts/ci.ps1 -SkipTests
+
+# Run integration tests (requires Docker)
+pwsh ./scripts/test-integration.ps1
+```
+
+### Makefile Wrapper (Optional)
+
+For developers who prefer `make`:
 
 ```makefile
-.PHONY: restore build test format lint quality
+.PHONY: ci test-integration format
 
-restore:
-	dotnet restore
+ci:
+	pwsh ./scripts/ci.ps1
 
-build: restore
-	dotnet build --no-restore
-
-test: build
-	dotnet test --no-build
+test-integration:
+	pwsh ./scripts/test-integration.ps1
 
 format:
 	dotnet format
 
-lint:
-	dotnet format --verify-no-changes
-
-quality: lint build test
-	@echo "All quality checks passed"
+# Aliases for convenience
+check: ci
+test: ci
 ```
 
 Usage:
 ```bash
-make quality    # Full pipeline
-make format     # Auto-fix formatting
-make lint       # Check without fixing
+make ci              # Same as: pwsh ./scripts/ci.ps1
+make test-integration # Same as: pwsh ./scripts/test-integration.ps1
 ```
+
+### The Rule
+
+| Location | Contains |
+|----------|----------|
+| `scripts/*.ps1` | All logic, all commands |
+| CI YAML | `pwsh ./scripts/ci.ps1` — nothing else |
+| Local terminal | `pwsh ./scripts/ci.ps1` — same thing |
+
+**If you need to change a check, you change the script. CI and local update together.**
 
 ---
 

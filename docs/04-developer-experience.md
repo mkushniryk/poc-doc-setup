@@ -359,6 +359,27 @@ dotnet test --filter Category=Unit --no-build
 - No waiting for CI to tell you about formatting issues
 - Confidence before pushing
 
+### Local = CI: Single Source of Truth
+
+**The rule:** If it passes locally, it passes in CI. No exceptions.
+
+```bash
+# Run the exact same checks as CI
+pwsh ./scripts/ci.ps1
+
+# This is what CI runs too - same script, same flow
+```
+
+| What | Where |
+|------|-------|
+| All validation logic | `scripts/ci.ps1` |
+| CI pipeline YAML | Just calls `pwsh ./scripts/ci.ps1` |
+| Your local terminal | Same command |
+
+**No surprises.** If CI fails, run the script locally and see the same failure. No "works on my machine" for build or test issues.
+
+> **Full setup details:** See [Project Configuration: Single Source of Truth](03-project-configuration.md#36-single-source-of-truth-local--ci)
+
 ---
 
 ## 4.6 IDE Configuration as Code
