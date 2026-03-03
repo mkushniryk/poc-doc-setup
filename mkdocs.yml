@@ -1,9 +1,9 @@
 site_name: .NET Velocity & Quality Playbook
 site_description: Ship faster by catching bugs before they ship. A practical guide to .NET development.
-site_url: https://yourusername.github.io/your-repo-name/
+site_url: https://mkushniryk.github.io/poc-doc-setup/
 
 repo_name: GitHub
-repo_url: https://github.com/yourusername/your-repo-name
+repo_url: https://github.com/mkushniryk/poc-doc-setup
 
 theme:
   name: material
