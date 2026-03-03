@@ -22,6 +22,117 @@ AI agents can produce code that:
 
 ---
 
+## The Economics of AI-Assisted Development
+
+AI subscriptions are expensive. GitHub Copilot, Claude, GPT-4 — costs add up quickly for a team.
+
+**But here's what actually happens:**
+
+### The Honest Budget Reality
+
+Let's be clear about what AI costs look like for a manager:
+
+| Line Item | Before AI | After AI |
+|-----------|-----------|----------|
+| Developer salary | $10,000/month | $10,000/month |
+| AI subscriptions | $0 | $50–200/month |
+| **Total** | $10,000 | $10,050–10,200 |
+
+**You don't save money on your monthly bill.** The developer keeps working. The salary stays the same. AI is an addition, not a replacement.
+
+### What You Actually Get
+
+The value isn't cost reduction — it's **output multiplication**:
+
+| What Changes | Before AI | After AI |
+|--------------|-----------|----------|
+| Features shipped per sprint | 3 | 5–7 |
+| Bug rate | Baseline | Lower (less manual error) |
+| Time stuck on syntax/boilerplate | 30% of day | 5% of day |
+| Documentation quality | "We'll do it later" | Actually exists |
+| Test coverage | "We'll add tests later" | Tests written upfront |
+
+**Same cost. More output. Higher quality.**
+
+### The Real Value Drivers
+
+| Value | How AI Delivers It |
+|-------|-------------------|
+| **Pace** | Tasks done in minutes, not hours |
+| **Performance** | Developers focus on hard problems, not typing |
+| **Quality** | More time for review, less time on boilerplate |
+| **Trust** | Deliverables are complete, not half-done |
+| **Reputation** | Ship faster, respond to clients faster |
+| **Morale** | Developers do interesting work, not tedious work |
+
+### What AI Actually Saves Time On
+
+| Task | Human time | AI-assisted time | Time freed |
+|------|-----------|------------------|------------|
+| Writing boilerplate code | 2 hours | 15 min | 1.75 hours |
+| Writing unit tests | 3 hours | 30 min | 2.5 hours |
+| Initial implementation draft | 4 hours | 45 min | 3.25 hours |
+| Regex, SQL, config syntax | 30 min each | 2 min each | 28 min each |
+| Documentation drafts | 1 hour | 10 min | 50 min |
+| Code review prep/cleanup | 1 hour | 15 min | 45 min |
+
+**That "saved" time doesn't disappear — it goes into the next feature, better testing, or fixing tech debt.**
+
+### The ROI Calculation (Correct Framing)
+
+```
+Monthly AI cost:           $50
+Developer salary:          $10,000
+Hours freed per month:     40+ hours
+
+What you pay:              +$50/month
+What you get:              40 hours of additional capacity
+
+Cost per additional hour:  $1.25/hour
+vs hiring another dev:     $60+/hour
+```
+
+**AI gives you ~40 hours of extra capacity for $50. Hiring gives you 160 hours for $10,000.**
+
+### What AI Eliminates
+
+AI doesn't reduce headcount — it eliminates the work that drains developers:
+
+| "Stupid stuff" AI handles | Why it matters |
+|---------------------------|----------------|
+| Syntax lookup | No more Stack Overflow tabs |
+| Boilerplate typing | Focus on logic, not repetition |
+| Test scaffolding | Tests get written instead of skipped |
+| Documentation first drafts | Docs actually exist |
+| Error message formatting | Consistent, helpful errors |
+| Regex writing | No 30-minute debugging sessions |
+
+**Developers do more meaningful work. That's the value.**
+
+### The Competitive Reality
+
+If your competitors use AI and you don't:
+
+| Impact | Consequence |
+|--------|-------------|
+| They ship faster | You lose market position |
+| They iterate more | You're stuck in longer cycles |
+| Their devs are less fatigued | Your devs burn out on repetitive work |
+| They attract talent | "No AI tools" is a red flag for candidates |
+
+### The Investment Mindset
+
+| Mindset | View |
+|---------|------|
+| **Cost center** | "AI adds $50/developer/month to my budget" |
+| **Capacity investment** | "AI adds 40 hours/developer/month of output" |
+
+**AI is not a cost reduction tool. It's a capacity multiplier.**
+
+You're not paying less. You're getting more.
+
+---
+
 ## AI Development Trust Levels
 
 | Level | Description | Supervision Required |

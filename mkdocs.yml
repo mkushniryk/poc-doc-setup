@@ -54,6 +54,7 @@ nav:
     - 5. Economics: 05-economics.md
     - 6. Standards & Culture: 06-standards-culture.md
     - 7. Anti-Patterns: 07-anti-patterns.md
+    - 8. Developer Responsibility: developer-responsibility.md
   - Implementation Guides:
     - Testing Strategy: testing-strategy.md
     - Testing Advanced: testing-advanced.md
